@@ -4,6 +4,7 @@ import { siteConfig } from "@/config/site"
 import { MainNav } from './Navbar';
 import { Icons } from './Icons';
 import { ThemeToggle } from './ThemeToggle';
+import { buttonVariants } from '@/components/ui/Button';
 
 export function SiteHeader() {
   return (
