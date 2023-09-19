@@ -2,6 +2,7 @@ import Link from "next/link"
 
 import { siteConfig } from "@/config/site"
 import { Icons } from './Icons';
+import { Login, Globe } from "lucide-react"
 import { ThemeToggle } from './ThemeToggle';
 import { buttonVariants } from '@/components/ui/Button';
 
@@ -29,7 +30,7 @@ export function Header() {
                   variant: "ghost",
                 })}
               >
-                <Icons.gitHub className="h-5 w-5" />
+                <Login className="h-5 w-5" />
                 <span className="sr-only">Sign In</span>
               </div>
             </Link>
@@ -44,7 +45,7 @@ export function Header() {
                   variant: "ghost",
                 })}
               >
-                <Icons.twitter   className="h-5 w-5 fill-current" />
+                <Globe className="h-5 w-5 fill-current" />
                 <span className="sr-only">Joshua Edo&apos;s Portfolio</span>
               </div>
             </Link>

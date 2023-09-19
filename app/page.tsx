@@ -1,7 +1,7 @@
 import Link from "next/link"
 
 import { siteConfig } from "@/config/site"
-import { buttonVariants } from "@/components/ui/Button"
+import { buttonVariants } from "@/components/ui/Button";
 
 export default function IndexPage() {
   return (
@@ -18,12 +18,12 @@ export default function IndexPage() {
       </div>
       <div className="flex gap-4">
         <Link
-          href={siteConfig.links.docs}
+          href={siteConfig.signIn.url}
           target="_blank"
           rel="noreferrer"
           className={buttonVariants()}
         >
-          Documentation
+          {siteConfig.signIn.title}
         </Link>
         <Link
           target="_blank"
