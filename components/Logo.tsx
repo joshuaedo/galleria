@@ -7,7 +7,7 @@ interface LogoProps {}
 
 const Logo: FC<LogoProps> = ({}) => {
   return (
-    <div className="font-medium">
+    <div className="general-sans font-medium">
       <Link href="/"> Galleria</Link>
     </div>
   )

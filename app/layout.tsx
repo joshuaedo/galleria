@@ -1,14 +1,17 @@
 import "@/styles/globals.css"
 import { Metadata } from "next"
+import { Inter } from "next/font/google"
 
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 
-import Footer from "../components/layout//Footer"
-import { Header } from "../components/layout//Header"
-import { ThemeProvider } from "../components/layout//ThemeProvider"
+import Footer from "../components/layout/Footer"
+import { Header } from "../components/layout/Header"
+import Providers from "../components/layout/Providers"
+import { Toaster } from "../components/ui/Toaster"
 import { siteFont } from "../lib/fonts"
-import { Toaster } from '../components/ui/Toaster';
+
+const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: {
@@ -39,17 +42,17 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <link rel="stylesheet" href={siteFont.url} />
         </head>
         <body
-          className={cn("general-sans min-h-screen bg-background font-sans antialiased ")}
+          className={cn("general-sans min-h-screen bg-background font-sans antialiased")}
         >
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Providers attribute="class" defaultTheme="system" enableSystem>
             <div className="relative flex min-h-screen flex-col">
-               {/* @ts-expect-error Server Component */}
+              {/* @ts-expect-error Server Component */}
               <Header />
               <div className="flex-1">{children}</div>
               <Footer />
               <Toaster />
             </div>
-          </ThemeProvider>
+          </Providers>
         </body>
       </html>
     </>
