@@ -34,7 +34,7 @@ const SignInWithGoogle: FC<SignInWithGoogleProps> = ({
   }
 
   return (
-    <div className={cn("flex justify-center", className)} {...props}>
+    <div className={`flex justify-center ${className}`} {...props}>
       <Button
         className="mr-2 h-4 w-4"
         onClick={loginWithGoogle}
