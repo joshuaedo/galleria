@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/DropDownMenu"
 
 interface UserAuthNavProps {
-  gUser: Pick<User, "name" | "image">
+  gUser: Pick<User, "name" | "image"> | undefined
 }
 
 const UserAuthNav: FC<UserAuthNavProps> = ({ gUser }) => {
