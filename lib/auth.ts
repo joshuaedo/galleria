@@ -18,6 +18,7 @@ export const authOptions: NextAuthOptions = {
     callbacks: {
         async session({ token, session }) {
             if (token) {
+                session.user = session.user || {}; // Initialize session.user if it doesn't exist
                 session.user.id = token.id
                 session.user.name = token.name
                 session.user.email = token.email
