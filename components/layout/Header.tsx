@@ -1,11 +1,9 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Globe, LogIn } from "lucide-react"
-
 import { siteConfig } from "@/config/site"
 import { getAuthSession } from "@/lib/auth"
 import { buttonVariants } from "@/components/ui/Button"
-
 import Logo from "../Logo"
 import UserAvatar from "../UserAvatar"
 import { ThemeToggle } from "./ThemeToggle"
