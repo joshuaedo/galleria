@@ -17,13 +17,15 @@ export const authOptions: NextAuthOptions = {
     callbacks: {
         async session({ token, session }) {
             if (token) {
-                session.user.id = token?.id
-                session.user.name = token?.name
-                session.user.email = token?.email
-                session.user.username = token?.username
-                session.user.image = token?.picture
+                session.user = {
+                    id: token.id,
+                    name: token.name,
+                    email: token.email,
+                    username: token.username,
+                    image: token.picture,
+                };
             }
-
+            
             return session;
         },
         redirect(){
