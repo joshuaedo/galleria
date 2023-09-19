@@ -19,13 +19,12 @@ export const authOptions: NextAuthOptions = {
         async session({ token, session }) {
             if (token) {
                 session.user = session.user || {}; // Initialize session.user if it doesn't exist
-                session.user.id = token.id
-                session.user.name = token.name
-                session.user.email = token.email
-                session.user.username = token.username
-                session.user.image = token?.picture
+                session.user.id = token.id as string | null | undefined;
+                session.user.name = token.name || null;
+                session.user.email = token.email || null;
+                session.user.username = token.username as string | null | undefined;
+                session.user.image = token.picture || null;
             }
-
             return session;
         },
         redirect(){
