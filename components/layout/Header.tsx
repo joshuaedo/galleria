@@ -1,19 +1,14 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Globe, LogIn } from "lucide-react"
-import { signOut } from "next-auth/react";
+
 import { siteConfig } from "@/config/site"
 import { getAuthSession } from "@/lib/auth"
 import { buttonVariants } from "@/components/ui/Button"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/DropDownMenu"
+
 import Logo from "../Logo"
-import UserAvatar from "../UserAvatar"
 import { ThemeToggle } from "./ThemeToggle"
+import UserAuthNav from '../UserAuthNav';
 
 export async function Header() {
   const session = await getAuthSession()
@@ -51,30 +46,7 @@ export async function Header() {
             </Link>
 
             {session ? (
-              <DropdownMenu>
-                <DropdownMenuTrigger>
-                  <UserAvatar
-                    className="h-5 w-5"
-                    user={{
-                      name: gUser?.name || null,
-                      image: gUser?.image || null,
-                    }}
-                  />
-                </DropdownMenuTrigger>
-                <DropdownMenuContent>
-                  <DropdownMenuItem
-                    onSelect={(e) => {
-                      e.preventDefault()
-                      signOut({
-                        callbackUrl: `${window.location.origin}/sign-in`,
-                      })
-                    }}
-                    className="cursor-pointer"
-                  >
-                    Sign Out
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+              <UserAuthNav gUser={gUser} />
             ) : (
               <Link href={siteConfig.signIn.url}>
                 <div
