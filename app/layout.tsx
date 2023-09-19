@@ -1,13 +1,12 @@
 import "@/styles/globals.css"
 import { Metadata } from "next"
-
 import { siteConfig } from "@/config/site"
 import { fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 import { ThemeProvider } from '../components/ThemeProvider';
-import { SiteHeader } from '../components/Header';
+import { Header } from '../components/Header';
 import Footer from '../components/Footer';
-import { TailwindIndicator } from '../components/TailwindIndicator';
+
 
 
 export const metadata: Metadata = {
@@ -44,11 +43,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
         >
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <div className="relative flex min-h-screen flex-col">
-              <SiteHeader />
+              <Header />
               <div className="flex-1">{children}</div>
               <Footer />
             </div>
-            <TailwindIndicator />
           </ThemeProvider>
         </body>
       </html>
