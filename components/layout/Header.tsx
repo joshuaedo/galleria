@@ -3,12 +3,17 @@ import Link from "next/link"
 import { Globe, LogIn } from "lucide-react"
 
 import { siteConfig } from "@/config/site"
+import { getAuthSession } from "@/lib/auth"
 import { buttonVariants } from "@/components/ui/Button"
 
 import Logo from "../Logo"
+import UserAvatar from "../UserAvatar"
 import { ThemeToggle } from "./ThemeToggle"
 
-export function Header() {
+export async function Header() {
+  const session = await getAuthSession()
+  const gUser = session?.user
+
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background">
       <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
@@ -39,17 +44,29 @@ export function Header() {
                 <span className="sr-only">Joshua Edo&apos;s Portfolio</span>
               </div>
             </Link>
-            <Link href={siteConfig.signIn.url}>
-              <div
-                className={buttonVariants({
-                  size: "icon",
-                  variant: "ghost",
-                })}
-              >
-                <LogIn className="h-5 w-5" />
-                <span className="sr-only">Sign In</span>
-              </div>
-            </Link>
+
+            {session ? (
+              <UserAvatar
+                className="h-5 w-5"
+                user={{
+                  name: gUser?.name || null,
+                  image: gUser?.image || null,
+                }}
+              />
+            ) : (
+              <Link href={siteConfig.signIn.url}>
+                <div
+                  className={buttonVariants({
+                    size: "icon",
+                    variant: "ghost",
+                  })}
+                >
+                  <LogIn className="h-5 w-5" />
+                  <span className="sr-only">Sign In</span>
+                </div>
+              </Link>
+            )}
+
             <ThemeToggle />
           </nav>
         </div>

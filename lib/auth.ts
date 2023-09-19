@@ -1,6 +1,5 @@
 import { NextAuthOptions, getServerSession } from "next-auth";
 import GoogleProvider from 'next-auth/providers/google';
-import {nanoid} from "nanoid";
 
 export const authOptions: NextAuthOptions = {
     session: {

@@ -22,12 +22,7 @@ export const Hero: FC<HeroProps> = ({}) => {
         </p>
       </div>
       <div className="flex gap-4">
-        <Link
-          href={siteConfig.signIn.url}
-          target="_blank"
-          rel="noreferrer"
-          className={buttonVariants()}
-        >
+        <Link href={siteConfig.signIn.url} className={buttonVariants()}>
           {siteConfig.signIn.title}
         </Link>
         <Link
