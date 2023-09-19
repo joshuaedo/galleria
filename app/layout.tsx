@@ -44,7 +44,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <body
           className={cn("general-sans min-h-screen bg-background font-sans antialiased")}
         >
-          <Providers attribute="class" defaultTheme="system" enableSystem>
+          <Providers attribute="class" defaultTheme="system">
             <div className="relative flex min-h-screen flex-col">
               {/* @ts-expect-error Server Component */}
               <Header />

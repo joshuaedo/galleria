@@ -15,7 +15,7 @@ const Providers = ({
   const queryClient = new QueryClient()
 
   return (
-    <NextThemesProvider {...themeProviderProps}>
+    <NextThemesProvider {...themeProviderProps} enableSystem>
       <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
     </NextThemesProvider>
   )
