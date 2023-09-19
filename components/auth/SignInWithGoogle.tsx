@@ -40,7 +40,7 @@ const SignInWithGoogle: FC<SignInWithGoogleProps> = ({
         onClick={loginWithGoogle}
         isLoading={isLoading}
       >
-        {!isLoading && <Icons.google className="h-4 w-4 mr-2" />}
+        {!isLoading && <Icons.google className="mr-2 h-4 w-4" />}
         Google
       </Button>
     </div>
