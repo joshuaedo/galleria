@@ -1,11 +1,5 @@
-import { JetBrains_Mono as FontMono, Inter as FontSans } from "next/font/google"
-
-export const fontSans = FontSans({
-  subsets: ["latin"],
-  variable: "--font-sans",
-})
-
-export const fontMono = FontMono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-})
+export const siteFont = {
+  source: "Font Share",
+  url:
+    "https://api.fontshare.com/v2/css?f[]=general-sans@400,500&f[]=stardom@400&f[]=bebas-neue@400&display=swap",
+};

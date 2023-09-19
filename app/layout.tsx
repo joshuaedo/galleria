@@ -1,13 +1,14 @@
 import "@/styles/globals.css"
 import { Metadata } from "next"
+
 import { siteConfig } from "@/config/site"
-import { fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
-import { ThemeProvider } from '../components/ThemeProvider';
-import { Header } from '../components/Header';
-import Footer from '../components/Footer';
 
-
+import Footer from "../components/layout//Footer"
+import { Header } from "../components/layout//Header"
+import { ThemeProvider } from "../components/layout//ThemeProvider"
+import { siteFont } from "../lib/fonts"
+import { Toaster } from '../components/ui/Toaster';
 
 export const metadata: Metadata = {
   title: {
@@ -34,18 +35,18 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <>
       <html lang="en" suppressHydrationWarning>
-        <head />
+        <head>
+          <link rel="stylesheet" href={siteFont.url} />
+        </head>
         <body
-          className={cn(
-            "min-h-screen bg-background font-sans antialiased",
-            fontSans.variable
-          )}
+          className={cn("general-sans min-h-screen bg-background font-sans antialiased ")}
         >
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <div className="relative flex min-h-screen flex-col">
               <Header />
               <div className="flex-1">{children}</div>
               <Footer />
+              <Toaster />
             </div>
           </ThemeProvider>
         </body>
