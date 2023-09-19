@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Globe, LogIn } from "lucide-react"
-
+import { signOut } from "next-auth/react";
 import { siteConfig } from "@/config/site"
 import { getAuthSession } from "@/lib/auth"
 import { buttonVariants } from "@/components/ui/Button"
@@ -11,7 +11,6 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/DropDownMenu"
-
 import Logo from "../Logo"
 import UserAvatar from "../UserAvatar"
 import { ThemeToggle } from "./ThemeToggle"
