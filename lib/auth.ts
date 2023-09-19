@@ -1,5 +1,6 @@
 import { NextAuthOptions, getServerSession } from "next-auth";
 import GoogleProvider from 'next-auth/providers/google';
+import {nanoid} from "nanoid";
 
 export const authOptions: NextAuthOptions = {
     session: {
@@ -17,16 +18,13 @@ export const authOptions: NextAuthOptions = {
     callbacks: {
         async session({ token, session }) {
             if (token) {
-                session.user = {
-                    id: token.id,
-                    name: token.name || null,
-                    email: token.email || null,
-                    image: token.picture || null,
-                    username: token.username || null,
-                };
+                session.user.id = token.id
+                session.user.name = token.name
+                session.user.email = token.email
+                session.user.username = token.username
+                session.user.image = token?.picture
             }
-    
-            
+
             return session;
         },
         redirect(){
