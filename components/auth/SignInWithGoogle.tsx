@@ -7,7 +7,12 @@ import { useToast } from "@/hooks/use-toast"
 import { Button } from "@/components/ui/Button"
 import { Icons } from "@/components/Icons"
 
-const SignInWithGoogle = ({}) => {
+interface SignInWithGoogleProps extends React.HTMLAttributes<HTMLDivElement> {}
+
+const SignInWithGoogle: FC<SignInWithGoogleProps> = ({
+  className,
+  ...props
+}) => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const { toast } = useToast()
 
@@ -29,10 +34,16 @@ const SignInWithGoogle = ({}) => {
   }
 
   return (
-    <Button onClick={loginWithGoogle} isLoading={isLoading}>
-      {!isLoading && <Icons.google className="mr-2 h-4 w-4" />}
-      Google
-    </Button>
+    <div className={cn("flex justify-center", className)} {...props}>
+      <Button
+        className="mr-2 h-4 w-4"
+        onClick={loginWithGoogle}
+        isLoading={isLoading}
+      >
+        {!isLoading && <Icons.google className="h-4 w-4 mr-2" />}
+        Google
+      </Button>
+    </div>
   )
 }
 
