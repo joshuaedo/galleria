@@ -3,8 +3,7 @@ import { siteConfig } from "@/config/site"
 import { buttonVariants } from "@/components/ui/Button"
 import Gallery from "@/components/Gallery"
 import { Hero } from "@/components/Hero"
-
-import { Icons } from "./Icons"
+import { Icons } from "@/components/Icons"
 
 export default function HomePage() {
   return (

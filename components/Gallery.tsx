@@ -5,9 +5,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useQuery } from "@tanstack/react-query"
 import debounce from "lodash.debounce"
-
 import { fetchGalleriaPhotos } from "@/lib/requests"
-import { useOnClickOutside } from "@/hooks/use-on-click-outside"
 import {
   Command,
   CommandEmpty,
@@ -26,10 +24,6 @@ const Gallery: FC<GalleryProps> = ({}) => {
   const pathname = usePathname()
   const commandRef = useRef<HTMLDivElement>(null)
 
-  useOnClickOutside(commandRef, () => {
-    setInput("")
-  })
-
   const {
     data: queryResults,
     refetch,
@@ -43,7 +37,7 @@ const Gallery: FC<GalleryProps> = ({}) => {
 
   const request = debounce(async () => {
     refetch()
-  }, 300)
+  }, 500)
 
   const debounceRequest = useCallback(() => {
     request()
