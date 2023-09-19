@@ -34,16 +34,10 @@ const SignInWithGoogle: FC<SignInWithGoogleProps> = ({
   }
 
   return (
-    <div className={`flex justify-center ${className}`} {...props}>
-      <Button
-        className="mr-2 h-4 w-4"
-        onClick={loginWithGoogle}
-        isLoading={isLoading}
-      >
-        {!isLoading && <Icons.google className="mr-2 h-4 w-4" />}
-        Google
-      </Button>
-    </div>
+    <Button variant="ghost" onClick={loginWithGoogle} isLoading={isLoading}>
+      {!isLoading && <Icons.google className="mr-2 h-4 w-4" />}
+      Google
+    </Button>
   )
 }
 
