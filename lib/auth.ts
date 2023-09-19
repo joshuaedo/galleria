@@ -20,7 +20,6 @@ export const authOptions: NextAuthOptions = {
             if (token && session.user) {
                 session.user.name = token.name
                 session.user.email = token.email
-                session.user.username = token.username
                 session.user.image = token?.picture
             }
 
