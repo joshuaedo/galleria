@@ -19,12 +19,13 @@ export const authOptions: NextAuthOptions = {
             if (token) {
                 session.user = {
                     id: token.id,
-                    name: token.name,
-                    email: token.email,
-                    username: token.username,
-                    image: token.picture,
+                    name: token.name || null,
+                    email: token.email || null,
+                    image: token.picture || null,
+                    username: token.username || null,
                 };
             }
+    
             
             return session;
         },
