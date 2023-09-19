@@ -79,3 +79,15 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
+
+.general-sans {
+  font-family: "General Sans", sans-serif;
+}
+
+.stardom {
+  font-family: "Stardom", serif;
+}
+
+.bebas-neue {
+  font-family: "Bebas Neue", sans-serif;
+}
