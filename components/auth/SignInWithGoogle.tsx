@@ -34,7 +34,7 @@ const SignInWithGoogle: FC<SignInWithGoogleProps> = ({
   }
 
   return (
-    <Button variant="ghost" onClick={loginWithGoogle} isLoading={isLoading}>
+    <Button variant="outline" className="w-full" onClick={loginWithGoogle} isLoading={isLoading}>
       {!isLoading && <Icons.google className="mr-2 h-4 w-4" />}
       Google
     </Button>

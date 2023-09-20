@@ -25,16 +25,18 @@ export default function SignInFireWall() {
         </CardDescription>
       </CardHeader>
       <CardContent className="grid gap-4">
-        <div className="grid grid-cols-2 gap-6">
-          
-          {/* TODO: Sign in with Github */}
-          <Button variant="outline">
-            <Icons.gitHub className="mr-2 h-4 w-4" />
-            Github
-          </Button>
-
-          <SignInWithGoogle />
+        {/* TODO: Sign in with Email */}
+        <div className="grid gap-2">
+          <Label htmlFor="email">Email</Label>
+          <Input id="email" type="email" placeholder="m@example.com" />
         </div>
+        <div className="grid gap-2">
+          <Label htmlFor="password">Password</Label>
+          <Input id="password" type="password" />
+        </div>
+
+        <Button className="w-full">Create account</Button>
+
         <div className="relative">
           <div className="absolute inset-0 flex items-center">
             <span className="w-full border-t" />
@@ -46,18 +48,9 @@ export default function SignInFireWall() {
           </div>
         </div>
 
-        {/* TODO: Sign in with Email */}
-        <div className="grid gap-2">
-          <Label htmlFor="email">Email</Label>
-          <Input id="email" type="email" placeholder="m@example.com" />
-        </div>
-        <div className="grid gap-2">
-          <Label htmlFor="password">Password</Label>
-          <Input id="password" type="password" />
-        </div>
       </CardContent>
       <CardFooter>
-        <Button className="w-full">Create account</Button>
+        <SignInWithGoogle />
       </CardFooter>
     </Card>
   )

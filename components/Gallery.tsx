@@ -6,7 +6,9 @@ import { usePathname } from "next/navigation"
 import { DndContext } from "@dnd-kit/core"
 import { useQuery } from "@tanstack/react-query"
 import debounce from "lodash.debounce"
+
 import { fetchSearchPhotos } from "@/lib/requests"
+import { Button } from "@/components/ui/Button"
 import {
   Command,
   CommandEmpty,
@@ -15,6 +17,7 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/Command"
+
 import { fetchCuratedPhotos } from "../lib/requests"
 import Card from "./Card"
 import { PageLoader } from "./Loader"
@@ -68,28 +71,40 @@ const Gallery: FC<GalleryProps> = ({}) => {
   return (
     <div className="space-y-6">
       {/* SearchBar */}
-      <Command
-        ref={commandRef}
-        className="relative h-fit w-[15rem] overflow-visible rounded-lg border bg-transparent md:w-[25rem] lg:w-[35rem]"
-      >
-        <CommandInput
-          onValueChange={(text) => {
-            setInput(text)
+      <div className="flex items-center gap-2">
+        <Command
+          ref={commandRef}
+          className="relative h-fit w-[15rem] overflow-visible rounded-lg border bg-transparent md:w-[25rem] lg:w-[35rem]"
+        >
+          <CommandInput
+            onValueChange={(text) => {
+              setInput(text)
+              debounceRequest()
+            }}
+            value={input}
+            className="focus border-none bg-transparent outline-none ring-0 focus:border-none focus:outline-none"
+            placeholder="Explore Galleria"
+          />
+        </Command>
+
+        <Button
+          variant="ghost"
+          onclick={() => {
+            setInput("cats")
             debounceRequest()
           }}
-          value={input}
-          className="focus border-none bg-transparent outline-none ring-0 focus:border-none focus:outline-none"
-          placeholder="Explore Galleria"
-        />
-      </Command>
+        >
+          Cats
+        </Button>
+      </div>
 
       {/* Loader */}
       {isFetching && <PageLoader />}
 
       {/* Gallery */}
-      {isFetched && photos &&  (
+      {isFetched && photos && (
         <main className="grid grid-cols-1 gap-4 pb-[9vh] md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {photos.map((photo) => (
+          {photos.map((photo) => (
             <Card key={photo.id} alt={photo.alt} src={photo.src.large} />
           ))}
         </main>
