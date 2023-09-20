@@ -20,12 +20,12 @@ export const fetchSearchPhotos = async (
 
     console.log(imagesResults)
 
-    //         // Parse data with Zod schema
-    //         const parsedData = ImagesSchemaWithPhotos.parse(imagesResults)
+            // Parse data with Zod schema
+            const parsedData = ImagesSchemaWithPhotos.parse(imagesResults)
 
-    //         if (parsedData.total_results === 0) return undefined
+            if (parsedData.total_results === 0) return undefined
 
-    //         return parsedData
+            return parsedData
   } catch (error) {
     // toast({
     //   description: "Error fetching photos",
