@@ -50,9 +50,6 @@ const Gallery: FC<GalleryProps> = ({}) => {
         </main>
       )} */}
 
-
-
-
       {/* @ts-expect-error */}
       {isFetched && photos && <DNDGallery photos={photos} />}
     </div>

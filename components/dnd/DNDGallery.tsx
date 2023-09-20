@@ -22,9 +22,9 @@ import { toast } from "@/hooks/use-toast"
 import { Button } from "@/components/ui/Button"
 import { Command, CommandInput } from "@/components/ui/Command"
 
+import { PhotoItem } from "../../types/photos"
 import Card from "../Card"
 import SortableCard from "./SortableCard"
-import { PhotoItem } from '../../types/photos';
 
 interface DNDGalleryProps {
   photos: PhotoItem[]
@@ -110,6 +110,7 @@ const DNDGallery: FC<DNDGalleryProps> = ({ photos }) => {
               src={item.src.large}
               alt={item.alt}
               color={item.color}
+              // @ts-expect-error
               id={item.id}
             />
           ))}
