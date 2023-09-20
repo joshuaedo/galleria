@@ -1,5 +1,5 @@
 import axios from "axios";
-const accessToken = process.env.PEXELS_API_KEY;
+const accessToken = process.env.NEXT_PUBLIC_PEXELS_API_KEY;
 
 // export const axiosUnsplashInstance = axios.create({
 //     baseURL: 'https://api.unsplash.com',
