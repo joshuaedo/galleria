@@ -12,6 +12,6 @@ const accessToken = process.env.PEXELS_API_KEY;
     baseURL: 'https://api.pexels.com/v1',
     headers: {
       accept: 'application/json',
-      Authorization: `Bearer ${accessToken}`,
+      Authorization: accessToken,
     },
   });

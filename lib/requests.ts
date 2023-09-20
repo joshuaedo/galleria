@@ -1,12 +1,12 @@
 import { Photo } from "@/types/unsplash";
 import { toast } from "@/hooks/use-toast";
-import { axiosInstance } from "./axios";
+import { axiosPexelsInstance } from "./axios";
 
 export const fetchSearchPhotos = async (input: string) => {
   if (!input) return [];
 
   try {
-    const res = await axiosInstance.get(
+    const res = await axiosPexelsInstance.get(
       `/searchs`, {
         params: {
           page: 1,
@@ -26,11 +26,10 @@ export const fetchSearchPhotos = async (input: string) => {
   }
 };
 
-export const fetchGalleriaPhotos = async () => {
-  if (!input) return [];
+export const fetchCuratedPhotos = async () => {
 
   try {
-    const res = await axiosInstance.get(
+    const res = await axiosPexelsInstance.get(
       `/curated`, {
         params: {
           page: 1,

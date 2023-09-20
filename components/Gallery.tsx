@@ -5,7 +5,8 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useQuery } from "@tanstack/react-query"
 import debounce from "lodash.debounce"
-import { fetchGalleriaPhotos } from "@/lib/requests"
+
+import { fetchSearchPhotos } from "@/lib/requests"
 import {
   Command,
   CommandEmpty,
@@ -15,7 +16,7 @@ import {
   CommandList,
 } from "@/components/ui/Command"
 
-import Loader from "./Loader"
+import { PageLoader } from "./Loader"
 
 interface GalleryProps {}
 
@@ -30,7 +31,7 @@ const Gallery: FC<GalleryProps> = ({}) => {
     isFetched,
     isFetching,
   } = useQuery({
-    queryFn: () => fetchGalleriaPhotos(input),
+    queryFn: () => fetchSearchPhotos(input),
     queryKey: ["search-query"],
     enabled: false,
   })
@@ -48,7 +49,7 @@ const Gallery: FC<GalleryProps> = ({}) => {
   }, [pathname])
 
   return (
-    <div className="">
+    <div className="space-y-6">
       {/* SearchBar */}
       <Command
         ref={commandRef}
@@ -66,7 +67,7 @@ const Gallery: FC<GalleryProps> = ({}) => {
       </Command>
 
       {/* Loader */}
-      {isFetching && <Loader />}
+      {isFetching && <PageLoader />}
 
       {/* Gallery */}
 
