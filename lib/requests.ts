@@ -14,9 +14,9 @@ export const fetchSearchPhotos = async (
         query: input,
       },
     })
-    console.log(res)
+    console.log(res.data)
 
-    const imagesResults: ImagesResults = res
+    const imagesResults: ImagesResults = res.data
 
     console.log(imagesResults)
 
