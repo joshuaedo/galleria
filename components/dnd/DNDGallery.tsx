@@ -30,7 +30,6 @@ interface DNDGalleryProps {
   photos: PhotoItem[]
 }
 
-
 const DNDGallery: FC<DNDGalleryProps> = ({ photos }) => {
   const defaultItems = photos
   const [items, setItems] = useState<PhotoItem[]>(defaultItems)

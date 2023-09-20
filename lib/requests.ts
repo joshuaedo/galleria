@@ -35,7 +35,6 @@ export const fetchPhotos = async (): Promise<ImagesResults | undefined> => {
     const curatedResults: ImagesResults = cur.data
 
     // Parse data with Zod schema
-    const parsedData = ImagesSchemaWithPhotos.parse(curatedResults)
 
     // Add color values to the photos
     parsedData.photos = addColorValues(parsedData.photos, filterTerms)
