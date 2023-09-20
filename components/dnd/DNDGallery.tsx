@@ -90,6 +90,7 @@ const DNDGallery: FC<DNDGalleryProps> = ({ photos }) => {
       <SortableContext items={items} strategy={rectSortingStrategy}>
         <main className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {items.map((item) => (
+            //@ts-expect-error
             <SortableCard
               key={item.id}
               src={item.src.large}
