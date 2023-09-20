@@ -1,11 +1,11 @@
 import { ImagesSchemaWithPhotos, type ImagesResults } from "@/lib/models"
 import { toast } from "@/hooks/use-toast"
 
+import { PexelsPhoto } from "../types/photos"
 import { axiosPexelsInstance } from "./axios"
-import { PexelsPhoto } from '../types/photos';
 
 // Function to add color values to photo objects
-function addColorValues(photos, colors) {
+function addColorValues(photos: any, colors: any) {
   const photosWithColors = []
 
   for (let i = 0; i < photos.length; i++) {
