@@ -62,3 +62,27 @@ export const fetchCuratedPhotos = async (
     throw error
   }
 }
+
+
+export const searchTerms = [
+  "Cats",
+  "Dogs",
+  "Beach",
+  "Nature",
+  "Sunset",
+  "Mountains",
+  "City",
+  "Food",
+  "Travel",
+  "Flowers",
+  "Cars",
+  "Technology",
+  "Family",
+  "Love",
+  "Fashion",
+  "Art",
+  "Music",
+  "Sports",
+  "Books",
+  "Stars",
+];

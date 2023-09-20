@@ -18,7 +18,7 @@ import {
   CommandList,
 } from "@/components/ui/Command"
 
-import { fetchCuratedPhotos } from "../lib/requests"
+import { fetchCuratedPhotos, searchTerms } from "../lib/requests"
 import Card from "./Card"
 import { PageLoader } from "./Loader"
 
@@ -71,10 +71,14 @@ const Gallery: FC<GalleryProps> = ({}) => {
   return (
     <div className="space-y-6">
       {/* SearchBar */}
-      <div className="flex items-center gap-4">
+      <div className="scrollbar-hide flex w-full items-center justify-start gap-4 overflow-x-scroll">
+        
+        <div
+        className="relative flex w-[240px] items-center overflow-visible md:w-[400px] lg:w-[560px]"
+        >
         <Command
           ref={commandRef}
-          className="relative h-fit w-[15rem] overflow-visible rounded-lg border bg-transparent md:w-[25rem] lg:w-[35rem]"
+          className="relative h-fit w-full rounded-lg border bg-transparent"
         >
           <CommandInput
             onValueChange={(text) => {
@@ -86,26 +90,24 @@ const Gallery: FC<GalleryProps> = ({}) => {
             placeholder="Explore Galleria"
           />
         </Command>
+        </div>
+        
 
-        <Button
-          variant="outline"
-          onClick={() => {
-            setInput("Cats")
-            debounceRequest()
-          }}
-        >
-          Cats
-        </Button>
 
-        <Button
-          variant="outline"
-          onClick={() => {
-            setInput("Purple")
-            debounceRequest()
-          }}
-        >
-          Purple
-        </Button>
+        <div className="flex gap-4">
+          {searchTerms.map((term) => (
+            <Button
+              key={term}
+              variant="outline"
+              onClick={() => {
+                setInput(term)
+                debounceRequest()
+              }}
+            >
+              {term}
+            </Button>
+          ))}
+        </div>
       </div>
 
       {/* Loader */}
