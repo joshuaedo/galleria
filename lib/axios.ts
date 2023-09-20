@@ -1,8 +1,17 @@
 import axios from "axios";
+const accessToken = process.env.PEXELS_API_KEY;
 
-export const axiosInstance = axios.create({
-    baseURL: 'https://api.unsplash.com',
+// export const axiosUnsplashInstance = axios.create({
+//     baseURL: 'https://api.unsplash.com',
+//     headers: {
+//       accept: 'application/json',
+//     },
+//   });
+
+  export const axiosPexelsInstance = axios.create({
+    baseURL: 'https://api.pexels.com/v1',
     headers: {
       accept: 'application/json',
+      Authorization: `Bearer ${accessToken}`,
     },
   });
