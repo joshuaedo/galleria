@@ -1,49 +1,46 @@
-import { ImagesSchemaWithPhotos, type ImagesResults } from "@/lib/models"
-import { toast } from "@/hooks/use-toast"
-import { axiosPexelsInstance } from "./axios"
-
+import { ImagesSchemaWithPhotos, ImagesResults } from "@/lib/models";
+import { toast } from "@/hooks/use-toast";
+import { axiosPexelsInstance } from "./axios";
 
 // Function to add color values to photo objects
-function addColorValues(photos, colors) {
-  const photosWithColors = []
+function addColorValues(photos: ImagesResults["photos"], colors: string[]) {
+  const photosWithColors: ImagesResults["photos"] = [];
 
   for (let i = 0; i < photos.length; i++) {
-    const photo = photos[i]
-    const color = colors[i % colors.length] // Cycle through colors
+    const photo = photos[i];
+    const color = colors[i % colors.length]; // Cycle through colors
 
     // Create a new photo object with the added color property
     const photoWithColor = {
       ...photo,
       color,
-    }
+    };
 
-    photosWithColors.push(photoWithColor)
+    photosWithColors.push(photoWithColor);
   }
 
-  return photosWithColors
+  return photosWithColors;
 }
 
-export const fetchPhotos = async (): Promise<ImagesResults | undefined> => {
+export const fetchPhotos = async (): Promise<ImagesResults["photos"] | undefined> => {
   try {
     const cur = await axiosPexelsInstance.get(`/curated`, {
       params: {
         page: 1,
         per_page: 50,
       },
-    })
-    const curatedResults: ImagesResults = cur.data
-
-    // Parse data with Zod schema
+    });
+    const curatedResults: ImagesResults = cur.data;
 
     // Add color values to the photos
-    parsedData.photos = addColorValues(parsedData.photos, filterTerms)
+    curatedResults.photos = addColorValues(curatedResults.photos, filterTerms);
 
-    console.log(parsedData)
+    console.log(curatedResults);
 
-    return parsedData as PhotoItem[]
+    return curatedResults.photos;
   } catch (error) {
-    throw error
+    throw error;
   }
 }
 
-export const filterTerms = ["purple", "green", "blue", "yellow", "red"]
+export const filterTerms: string[] = ["purple", "green", "blue", "yellow", "red"];
