@@ -20,6 +20,7 @@ import {
 
 import { toast } from "@/hooks/use-toast"
 import { Button } from "@/components/ui/Button"
+import { Command, CommandInput } from "@/components/ui/Command"
 
 import Card from "../Card"
 import SortableCard from "./SortableCard"
@@ -33,6 +34,7 @@ interface PhotoItem {
   src: {
     large: string
   }
+  color: string
   id: number
 }
 
@@ -40,6 +42,7 @@ const DNDGallery: FC<DNDGalleryProps> = ({ photos }) => {
   const defaultItems = photos
   const [items, setItems] = useState<PhotoItem[]>(defaultItems)
   const [activeItem, setActiveItem] = useState<PhotoItem | undefined>(undefined)
+  const [filteredItems, setFilteredItems] = useState<PhotoItem[]>(defaultItems)
 
   const sensors = useSensors(useSensor(PointerSensor), useSensor(TouchSensor))
 
@@ -79,6 +82,16 @@ const DNDGallery: FC<DNDGalleryProps> = ({ photos }) => {
     })
   }
 
+  const [input, setInput] = useState<string>("")
+
+  useEffect(() => {
+    // Filter items based on the input color
+    const filtered = items.filter((item) =>
+      item.color.toLowerCase().includes(input.toLowerCase())
+    )
+    setFilteredItems(filtered)
+  }, [items, input])
+
   return (
     <DndContext
       sensors={sensors}
@@ -87,14 +100,24 @@ const DNDGallery: FC<DNDGalleryProps> = ({ photos }) => {
       onDragEnd={handleDragEnd}
       onDragCancel={handleDragCancel}
     >
-      <SortableContext items={items} strategy={rectSortingStrategy}>
+      <Command>
+        <CommandInput
+          onValueChange={(text) => {
+            setInput(text)
+          }}
+          value={input}
+          className="focus border-none bg-transparent outline-none ring-0 focus:border-none focus:outline-none"
+          placeholder="try searching for purple"
+        />
+      </Command>
+      <SortableContext items={filteredItems} strategy={rectSortingStrategy}>
         <main className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {items.map((item) => (
+          {filteredItems.map((item) => (
             <SortableCard
               key={item.id}
               src={item.src.large}
               alt={item.alt}
-              //@ts-expect-error
+              color={item.color}
               id={item.id}
             />
           ))}

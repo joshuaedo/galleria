@@ -8,14 +8,6 @@ import { useQuery } from "@tanstack/react-query"
 
 import { fetchPhotos } from "@/lib/requests"
 import { Button } from "@/components/ui/Button"
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-} from "@/components/ui/Command"
 
 import { searchTerms } from "../lib/requests"
 import Card from "./Card"
@@ -36,32 +28,12 @@ const Gallery: FC<GalleryProps> = ({}) => {
   })
 
   const router = useRouter()
-  const [input, setInput] = useState<string>("")
   const commandRef = useRef<HTMLDivElement>(null)
   const photos = photoResults?.photos
   const [isDropped, setIsDropped] = useState(false)
 
   return (
     <div className="space-y-6">
-      {/* SearchBar */}
-      <div className="scrollbar-hide flex w-full items-center justify-center md:justify-start">
-        <div className="relative flex w-[240px] items-center overflow-visible md:w-[400px] lg:w-[560px]">
-          <Command
-            ref={commandRef}
-            className="relative h-fit w-full rounded-lg border bg-transparent"
-          >
-            <CommandInput
-              onValueChange={(text) => {
-                setInput(text)
-              }}
-              value={input}
-              className="focus border-none bg-transparent outline-none ring-0 focus:border-none focus:outline-none"
-              placeholder="Explore Galleria"
-            />
-          </Command>
-        </div>
-      </div>
-
       {/* Loader */}
       {isFetching && <PageLoader />}
 

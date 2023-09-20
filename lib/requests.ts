@@ -47,4 +47,4 @@ export const fetchPhotos = async (): Promise<ImagesResults | undefined> => {
   }
 }
 
-export const filterTerms = ["Purple", "Green", "Blue", "Yellow", "Red"]
+export const filterTerms = ["purple", "green", "blue", "yellow", "red"]
