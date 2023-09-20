@@ -71,7 +71,7 @@ const Gallery: FC<GalleryProps> = ({}) => {
   return (
     <div className="space-y-6">
       {/* SearchBar */}
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-4">
         <Command
           ref={commandRef}
           className="relative h-fit w-[15rem] overflow-visible rounded-lg border bg-transparent md:w-[25rem] lg:w-[35rem]"
@@ -88,13 +88,23 @@ const Gallery: FC<GalleryProps> = ({}) => {
         </Command>
 
         <Button
-          variant="ghost"
-          onclick={() => {
-            setInput("cats")
+          variant="outline"
+          onClick={() => {
+            setInput("Cats")
             debounceRequest()
           }}
         >
           Cats
+        </Button>
+
+        <Button
+          variant="outline"
+          onClick={() => {
+            setInput("Purple")
+            debounceRequest()
+          }}
+        >
+          Purple
         </Button>
       </div>
 
