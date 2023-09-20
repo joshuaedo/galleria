@@ -42,7 +42,7 @@ export const fetchPhotos = async (): Promise<ImagesResults | undefined> => {
 
     console.log(parsedData)
 
-    return parsedData as PexelsPhoto[]
+    return parsedData 
   } catch (error) {
     throw error
   }
