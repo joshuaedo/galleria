@@ -90,7 +90,7 @@ const Gallery: FC<GalleryProps> = ({}) => {
       {isFetched && (
         <main className="grid grid-cols-1 gap-4 pb-[9vh] md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {photos.map((photo) => (
-            <Card key={photo.id} alt={photo.alt} src={photo.src} />
+            <Card key={photo.id} alt={photo.alt} src={photo.src.large} />
           ))}
         </main>
       )}

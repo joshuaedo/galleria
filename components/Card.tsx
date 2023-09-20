@@ -23,7 +23,7 @@ const Card: FC<CardProps> = ({ alt, src }) => {
         <HoverCard>
           <HoverCardTrigger asChild>
             <Image
-              src={src.large}
+              src={src}
               height={1000}
               width={1000}
               alt={alt}
