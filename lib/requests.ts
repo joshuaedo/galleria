@@ -3,86 +3,46 @@ import { toast } from "@/hooks/use-toast"
 
 import { axiosPexelsInstance } from "./axios"
 
-export const fetchSearchPhotos = async (
-  input: string
-): Promise<ImagesResults | undefined> => {
+export const fetchPhotos = async (): Promise<ImagesResults | undefined> => {
   try {
-    const res = await axiosPexelsInstance.get(`/search`, {
+    const cur = await axiosPexelsInstance.get(`/curated`, {
       params: {
         page: 1,
-        query: input,
+        per_page: 40,
       },
     })
-    // console.log(res.data)
+    const curatedResults: ImagesResults = cur.data
 
-    const imagesResults: ImagesResults = res.data
+    console.log(cur.data)
 
-    // console.log(imagesResults)
+    const cat = await axiosPexelsInstance.get(`/search`, {
+      params: {
+        page: 1,
+        query: "Cats",
+      },
+    })
+    const searchResults: ImagesResults = cat.data
+
+    console.log(cat.data)
 
     // Parse data with Zod schema
-    const parsedData = ImagesSchemaWithPhotos.parse(imagesResults)
-
-    if (parsedData.total_results === 0) return undefined
+    const parsedData = ImagesSchemaWithPhotos.parse(curatedResults)
 
     return parsedData
   } catch (error) {
-    // toast({
-    //   description: "Error fetching photos",
-    //   variant: "destructive",
-    // });
-    // console.log("Error fetching photos:", error);
     throw error
   }
 }
-
-export const fetchCuratedPhotos = async (
-): Promise<ImagesResults | undefined> => {
-  try {
-    const res = await axiosPexelsInstance.get(`/curated`, {
-      params: {
-        page: 1,
-      },
-    })
-    // console.log(res.data)
-
-    const imagesResults: ImagesResults = res.data
-
-    // console.log(imagesResults)
-
-    // Parse data with Zod schema
-    const parsedData = ImagesSchemaWithPhotos.parse(imagesResults)
-
-    return parsedData
-  } catch (error) {
-    // toast({
-    //   description: "Error fetching photos",
-    //   variant: "destructive",
-    // });
-    // console.log("Error fetching photos:", error);
-    throw error
-  }
-}
-
 
 export const searchTerms = [
   "Cats",
-  "Dogs",
   "Beach",
   "Nature",
   "Sunset",
-  "Mountains",
-  "City",
   "Food",
   "Travel",
   "Flowers",
   "Cars",
   "Technology",
-  "Family",
   "Love",
-  "Fashion",
-  "Art",
-  "Music",
-  "Sports",
-  "Books",
-  "Stars",
-];
+]

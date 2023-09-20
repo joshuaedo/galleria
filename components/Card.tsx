@@ -1,6 +1,6 @@
 "use client"
 
-import { FC } from "react"
+import { CSSProperties, HTMLAttributes, forwardRef } from "react"
 import Image from "next/image"
 import { Info } from "lucide-react"
 
@@ -11,34 +11,64 @@ import {
   HoverCardTrigger,
 } from "@/components/ui/HoverCard"
 
-interface CardProps {
+type Props = {
+  item?: {
+    alt: string
+    src: {
+      large: string
+    }
+    id: number
+  }
   alt: string
   src: string
-}
+  isOpacityEnabled?: boolean
+  isDragging?: boolean
+} & HTMLAttributes<HTMLDivElement>
 
-const Card: FC<CardProps> = ({ alt, src }) => {
-  return (
-    <div className="flex justify-center pb-4">
-      <div className="relative overflow-hidden">
-        <HoverCard>
-          <HoverCardTrigger asChild>
-            <Image
-              src={src}
-              height={1000}
-              width={1000}
-              alt={alt}
-              className="h-[320px] w-[233px] rounded-sm object-cover transition ease-in-out hover:scale-105 md:h-[380px] md:w-[310px]"
-            />
-          </HoverCardTrigger>
-          <HoverCardContent className="w-fit p-2">
-            <div className="flex items-center">
-              <span className="text-xs text-muted-foreground">{alt}</span>
-            </div>
-          </HoverCardContent>
-        </HoverCard>
+// eslint-disable-next-line react/display-name
+const Card = forwardRef<HTMLDivElement, Props>(
+  ({ alt, src, isOpacityEnabled, isDragging, style, ...props }, ref) => {
+    const styles: CSSProperties = {
+      opacity: isOpacityEnabled ? "0.4" : "1",
+      cursor: isDragging ? "grabbing" : "grab",
+      lineHeight: "0.5",
+      ...style,
+    }
+
+    return (
+      <div
+        className="flex justify-center pb-4"
+        ref={ref}
+        style={styles}
+        {...props}
+      >
+        <div className="relative overflow-hidden">
+          <HoverCard>
+            <HoverCardTrigger asChild>
+              <Image
+                src={src}
+                height={1000}
+                width={1000}
+                alt={alt}
+                style={{
+                  boxShadow: isDragging
+                    ? "none"
+                    : "rgb(63 63 68 / 5%) 0px 0px 0px 1px, rgb(34 33 81 / 15%) 0px 1px 3px 0px",
+                  maxWidth: "100%",
+                }}
+                className="h-[320px] w-[233px] rounded-sm object-cover transition ease-in-out hover:scale-105 md:h-[380px] md:w-[310px]"
+              />
+            </HoverCardTrigger>
+            <HoverCardContent className="w-fit p-2">
+              <div className="flex items-center">
+                <span className="text-xs text-muted-foreground">{alt}</span>
+              </div>
+            </HoverCardContent>
+          </HoverCard>
+        </div>
       </div>
-    </div>
-  )
-}
+    )
+  }
+)
 
 export default Card
