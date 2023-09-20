@@ -9,7 +9,6 @@ import { useQuery } from "@tanstack/react-query"
 import { fetchPhotos } from "@/lib/requests"
 import { Button } from "@/components/ui/Button"
 
-import { searchTerms } from "../lib/requests"
 import Card from "./Card"
 import { PageLoader } from "./Loader"
 import DNDGallery from "./dnd/DNDGallery"
