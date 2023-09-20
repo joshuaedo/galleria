@@ -24,19 +24,12 @@ import { Command, CommandInput } from "@/components/ui/Command"
 
 import Card from "../Card"
 import SortableCard from "./SortableCard"
+import { PhotoItem } from '../../types/photos';
 
 interface DNDGalleryProps {
   photos: PhotoItem[]
 }
 
-interface PhotoItem {
-  alt: string
-  src: {
-    large: string
-  }
-  color: string
-  id: number
-}
 
 const DNDGallery: FC<DNDGalleryProps> = ({ photos }) => {
   const defaultItems = photos
