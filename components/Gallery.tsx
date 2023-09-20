@@ -5,7 +5,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useQuery } from "@tanstack/react-query"
 import debounce from "lodash.debounce"
-
+import { fetchCuratedPhotos } from '../lib/requests';
 import { fetchSearchPhotos } from "@/lib/requests"
 import {
   Command,
@@ -18,9 +18,20 @@ import {
 
 import { PageLoader } from "./Loader"
 
+
 interface GalleryProps {}
 
 const Gallery: FC<GalleryProps> = ({}) => {
+  const {
+    data: curatedResults,
+    isFetched,
+    isFetching,
+  } = useQuery({
+    queryFn: () => fetchCuratedPhotos(),
+    queryKey: ["curated"],
+    enabled: true,
+  })
+
   const [input, setInput] = useState<string>("")
   const pathname = usePathname()
   const commandRef = useRef<HTMLDivElement>(null)
@@ -28,8 +39,6 @@ const Gallery: FC<GalleryProps> = ({}) => {
   const {
     data: queryResults,
     refetch,
-    isFetched,
-    isFetching,
   } = useQuery({
     queryFn: () => fetchSearchPhotos(input),
     queryKey: ["search-query"],
@@ -47,6 +56,13 @@ const Gallery: FC<GalleryProps> = ({}) => {
   useEffect(() => {
     setInput("")
   }, [pathname])
+
+  // console.log(curatedResults.photos)
+  // console.log(queryResults.photos)
+
+  const photos = input === "" ? curatedResults?.photos : queryResults?.photos
+
+  console.log(photos)
 
   return (
     <div className="space-y-6">
@@ -72,11 +88,22 @@ const Gallery: FC<GalleryProps> = ({}) => {
       {/* Gallery */}
 
       {/* {isFetched && (
-
+<main className="pt-[22vh] pb-[9vh] px-[2%] grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {posts.map((post) => (
+          <BlogCard
+            title={post.title}
+            author={post.author}
+            coverPhoto={post.coverPhoto}
+            key={post.id}
+            datePublished={post.datePublished}
+            slug={post.slug}
+          />
+        ))}
+      </main>
 )}
 
 
-(queryResults?.length ?? 0) > 0 ?  */}
+ */}
     </div>
   )
 }
