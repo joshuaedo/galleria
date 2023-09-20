@@ -5,7 +5,6 @@ import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { DndContext } from "@dnd-kit/core"
 import { useQuery } from "@tanstack/react-query"
-import debounce from "lodash.debounce"
 
 import { fetchPhotos } from "@/lib/requests"
 import { Button } from "@/components/ui/Button"
@@ -16,7 +15,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/components/ui/Command"
+}, from "@/components/ui/Command"
 
 import { searchTerms } from "../lib/requests"
 import Card from "./Card"
@@ -54,7 +53,6 @@ const Gallery: FC<GalleryProps> = ({}) => {
             <CommandInput
               onValueChange={(text) => {
                 setInput(text)
-                debounceRequest()
               }}
               value={input}
               className="focus border-none bg-transparent outline-none ring-0 focus:border-none focus:outline-none"
