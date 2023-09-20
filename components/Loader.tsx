@@ -15,7 +15,7 @@ export default Loader;
 
 export const PageLoader: FC<LoaderProps> = ({}) => {
   return (
-    <div className="flex h-screen w-screen items-center justify-center">
+    <div className="flex h-[50vh] w-full items-center justify-center">
       <Loader2 className="animate-spin" />
     </div>
   );

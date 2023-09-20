@@ -36,7 +36,6 @@ export const fetchSearchPhotos = async (
 }
 
 export const fetchCuratedPhotos = async (
-  input: string
 ): Promise<ImagesResults | undefined> => {
   try {
     const res = await axiosPexelsInstance.get(`/curated`, {
