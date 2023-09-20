@@ -6,7 +6,6 @@ import { axiosPexelsInstance } from "./axios"
 export const fetchSearchPhotos = async (
   input: string
 ): Promise<ImagesResults | undefined> => {
-  if (!input) return []
 
   try {
     const res = await axiosPexelsInstance.get(`/search`, {
