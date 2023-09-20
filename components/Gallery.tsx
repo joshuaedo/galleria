@@ -15,7 +15,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-}, from "@/components/ui/Command"
+} from "@/components/ui/Command"
 
 import { searchTerms } from "../lib/requests"
 import Card from "./Card"
