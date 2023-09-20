@@ -9,6 +9,8 @@ import { Icons } from "@/components/Icons"
 import { AntiHero } from "../components/AntiHero"
 import { getAuthSession } from "../lib/auth"
 
+export const dynamic = "force-dynamic"
+
 export default function HomePage() {
   const session = getAuthSession()
 
