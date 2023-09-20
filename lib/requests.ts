@@ -16,7 +16,7 @@ export const fetchSearchPhotos = async (
     })
     console.log(res)
 
-    const imagesResults: ImagesResults = await res.json()
+    const imagesResults: ImagesResults = res
 
     console.log(imagesResults)
 
