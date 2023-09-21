@@ -15,7 +15,13 @@ import {
 import UserAvatar from "./UserAvatar"
 
 interface UserAuthNavProps {
-  gUser: { name?: string | null | undefined; email?: string | null | undefined; image?: string | null | undefined; } | undefined
+  gUser:
+    | {
+        name?: string | null | undefined
+        email?: string | null | undefined
+        image?: string | null | undefined
+      }
+    | undefined
 }
 
 const UserAuthNav: FC<UserAuthNavProps> = ({ gUser }) => {
@@ -41,7 +47,7 @@ const UserAuthNav: FC<UserAuthNavProps> = ({ gUser }) => {
             onSelect={(e) => {
               e.preventDefault()
               signOut({
-                callbackUrl: `${window.location.origin}/sign-in`,
+                callbackUrl: "/",
               })
             }}
             className="cursor-pointer"
