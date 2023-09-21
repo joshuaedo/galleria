@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { useSession } from "next-auth/react"
-
+import { redirect } from "next/navigation"
 import { siteConfig } from "@/config/site"
 import { buttonVariants } from "@/components/ui/Button"
 import Gallery from "@/components/Gallery"
