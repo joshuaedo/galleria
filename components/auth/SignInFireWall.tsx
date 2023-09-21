@@ -1,6 +1,6 @@
 "use client"
 
-import { FormEventHandler, useState } from "react"
+import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { signIn } from "next-auth/react"
 
@@ -27,7 +27,7 @@ export default function SignInFireWall() {
   const [error, setError] = useState<string>("")
   const router = useRouter()
 
-  const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     setIsLoading(true)
     setError("")
