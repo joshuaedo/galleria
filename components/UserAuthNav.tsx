@@ -44,11 +44,8 @@ const UserAuthNav: FC<UserAuthNavProps> = ({ gUser }) => {
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuItem
-            onSelect={(e) => {
-              e.preventDefault()
-              signOut({
-                callbackUrl: "/",
-              })
+            onSelect={() => {
+              signOut()
             }}
             className="cursor-pointer"
           >

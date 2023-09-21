@@ -14,7 +14,7 @@ import { AntiHero } from "../components/AntiHero"
 export const dynamic = "force-dynamic"
 
 export default function HomePage() {
-  const verifiedWithGoogle = useSession({
+  const session = useSession({
     required: true,
     onUnauthenticated() {
       return (
