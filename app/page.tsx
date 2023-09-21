@@ -36,4 +36,4 @@ export default function HomePage() {
   )
 }
 
-Home.requireAuth = true
+HomePage.requireAuth = true
