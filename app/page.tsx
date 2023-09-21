@@ -14,23 +14,26 @@ import { AntiHero } from "../components/AntiHero"
 export const dynamic = "force-dynamic"
 
 export default function HomePage() {
-  const verifiedWithGoogle = useSession()
-
-  return (
-    <div className="container space-y-6 py-6">
-      {verifiedWithGoogle ? (
-        <>
-          <AntiHero />
-          <Gallery />
-        </>
-      ) : (
+  const verifiedWithGoogle = useSession({
+    required: true,
+    onUnauthenticated() {
+      return (
         <>
           <Hero />
           <Link href={siteConfig.signIn.url} className={buttonVariants()}>
             {siteConfig.signIn.title}
           </Link>
         </>
-      )}
+      )
+    },
+  })
+
+  return (
+    <div className="container space-y-6 py-6">
+      <AntiHero />
+      <Gallery />
     </div>
   )
 }
+
+Home.requireAuth = true
