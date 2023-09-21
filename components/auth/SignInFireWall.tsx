@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, FormEventHandler } from "react"
+import { FormEventHandler, useState } from "react"
 import { useRouter } from "next/navigation"
 import { signIn } from "next-auth/react"
 
@@ -40,7 +40,7 @@ export default function SignInFireWall() {
       })
       console.log(response)
 
-      if (!response.error) {
+      if (!response?.error) {
         router.push("/")
       } else {
         toast({
