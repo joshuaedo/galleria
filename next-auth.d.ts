@@ -2,14 +2,14 @@ import NextAuth from "next-auth"
 
 declare module "next-auth" {
   interface User {
-    name: string
-    image: string
+    name: string | null
+    image: string | null
   }
 
   interface Session {
     user: {
-      name: string
-      image: string
+      name: string | null
+      image: string | null
     }
   }
 }
