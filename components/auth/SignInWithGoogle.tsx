@@ -32,11 +32,32 @@ const SignInWithGoogle: FC<SignInWithGoogleProps> = ({
     }
   }
 
+
+  const testCredentials = async () => {
+    setIsLoading(true)
+
+    try {
+      toast({
+        title: "Error",
+        description: "Google Login has been disabled for now, please try logging in with the test credentials.",
+        variant: "destructive",
+      })
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "There was a problem logging in with Google",
+        variant: "destructive",
+      })
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
   return (
     <Button
       variant="outline"
       className="w-full"
-      onClick={loginWithGoogle}
+      onClick={testCredentials}
       isLoading={isLoading}
     >
       {!isLoading && <Icons.google className="mr-2 h-4 w-4" />}
