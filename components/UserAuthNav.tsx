@@ -15,7 +15,7 @@ import {
 import UserAvatar from "./UserAvatar"
 
 interface UserAuthNavProps {
-  gUser: Pick<User, "name" | "image"> | undefined
+  gUser: any
 }
 
 const UserAuthNav: FC<UserAuthNavProps> = ({ gUser }) => {
