@@ -15,7 +15,7 @@ import { ThemeToggle } from "./ThemeToggle"
 
 export function Header() {
   const session = useSession()
-  const gUser = session?.data.user
+  const gUser = session?.data?.user
 
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background">
