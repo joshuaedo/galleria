@@ -17,14 +17,15 @@ export default function HomePage() {
   const session = useSession({
     required: true,
     onUnauthenticated() {
-      return (
-        <>
-          <Hero />
-          <Link href={siteConfig.signIn.url} className={buttonVariants()}>
-            {siteConfig.signIn.title}
-          </Link>
-        </>
-      )
+      redirect('/sign-in')
+    //   return (
+    //     <>
+    //       <Hero />
+    //       <Link href={siteConfig.signIn.url} className={buttonVariants()}>
+    //         {siteConfig.signIn.title}
+    //       </Link>
+    //     </>
+    //   )
     },
   })
 
