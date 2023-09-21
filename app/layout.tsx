@@ -42,11 +42,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <link rel="stylesheet" href={siteFont.url} />
         </head>
         <body
-          className={cn("general-sans min-h-screen bg-background font-sans antialiased")}
+          className={cn(
+            "general-sans min-h-screen bg-background font-sans antialiased"
+          )}
         >
           <Providers>
             <div className="relative flex min-h-screen flex-col">
-              {/* @ts-expect-error Server Component */}
               <Header />
               <div className="flex-1">{children}</div>
               <Footer />
