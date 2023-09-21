@@ -3,7 +3,7 @@
 import React, { FC, useState } from "react"
 import { signIn } from "next-auth/react"
 
-import { useToast } from "@/hooks/use-toast"
+import { toast } from "@/hooks/use-toast"
 import { Button } from "@/components/ui/Button"
 import { Icons } from "@/components/Icons"
 
@@ -14,7 +14,6 @@ const SignInWithGoogle: FC<SignInWithGoogleProps> = ({
   ...props
 }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const { toast } = useToast()
 
   const loginWithGoogle = async () => {
     setIsLoading(true)
@@ -34,7 +33,12 @@ const SignInWithGoogle: FC<SignInWithGoogleProps> = ({
   }
 
   return (
-    <Button variant="outline" className="w-full" onClick={loginWithGoogle} isLoading={isLoading}>
+    <Button
+      variant="outline"
+      className="w-full"
+      onClick={loginWithGoogle}
+      isLoading={isLoading}
+    >
       {!isLoading && <Icons.google className="mr-2 h-4 w-4" />}
       Google
     </Button>
