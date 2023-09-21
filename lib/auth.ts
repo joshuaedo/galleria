@@ -1,6 +1,7 @@
 import { auth } from "@/firebase"
 import { signInWithEmailAndPassword } from "firebase/auth"
-import { NextAuthOptions, getServerSession } from "next-auth/index"
+import { getServerSession } from "next-auth/index"
+import type { NextAuthOptions } from "next-auth/index.d.ts"
 import CredentialsProvider from "next-auth/providers/credentials"
 import GoogleProvider from "next-auth/providers/google"
 
