@@ -27,7 +27,7 @@ export default function SignInFireWall() {
   const [error, setError] = useState<string>("")
   const router = useRouter()
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault()
     setIsLoading(true)
     setError("")
@@ -73,7 +73,7 @@ export default function SignInFireWall() {
             <Label htmlFor="email">Email</Label>
             <Input
               value={email}
-              onChange={(e) => setEmail(e.target.value)} // Corrected the onChange handler
+              onChange={(e: any) => setEmail(e.target.value)} // Corrected the onChange handler
               id="email"
               type="email"
             />
@@ -82,7 +82,7 @@ export default function SignInFireWall() {
             <Label htmlFor="password">Password</Label>
             <Input
               value={password}
-              onChange={(e) => setPassword(e.target.value)} // Corrected the onChange handler
+              onChange={(e: any) => setPassword(e.target.value)} // Corrected the onChange handler
               id="password"
               type="password"
             />
