@@ -1,16 +1,20 @@
+"use client"
+
 import Link from "next/link"
+import { useSession } from "next-auth/react"
+
 import { siteConfig } from "@/config/site"
 import { buttonVariants } from "@/components/ui/Button"
 import Gallery from "@/components/Gallery"
 import { Hero } from "@/components/Hero"
 import { Icons } from "@/components/Icons"
+
 import { AntiHero } from "../components/AntiHero"
-import { getAuthSession } from "../lib/auth"
 
 export const dynamic = "force-dynamic"
 
-export default async function HomePage() {
-  const verifiedWithGoogle = await getAuthSession()
+export default function HomePage() {
+  const verifiedWithGoogle = useSession()
 
   return (
     <div className="container space-y-6 py-6">

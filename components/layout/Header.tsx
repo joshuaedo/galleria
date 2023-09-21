@@ -1,16 +1,20 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
 import { Globe, LogIn } from "lucide-react"
-import { siteConfig } from "@/config/site"
-import { getAuthSession } from "@/lib/auth"
-import { buttonVariants } from "@/components/ui/Button"
-import Logo from "../Logo"
-import { ThemeToggle } from "./ThemeToggle"
-import UserAuthNav from '../UserAuthNav';
-import { Icons } from '../Icons';
+import { useSession } from "next-auth/react"
 
-export async function Header() {
-  const session = await getAuthSession()
+import { siteConfig } from "@/config/site"
+import { buttonVariants } from "@/components/ui/Button"
+
+import { Icons } from "../Icons"
+import Logo from "../Logo"
+import UserAuthNav from "../UserAuthNav"
+import { ThemeToggle } from "./ThemeToggle"
+
+export function Header() {
+  const session = useSession()
   const gUser = session?.user
 
   return (
@@ -43,13 +47,13 @@ export async function Header() {
             </Link>
 
             <Link
-            target="_blank"
-            rel="noreferrer"
-            href={siteConfig.links.github}
-            className={buttonVariants({ variant: "ghost" })}
-          >
-            <Icons.gitHub className="h-5 w-5" />
-          </Link>
+              target="_blank"
+              rel="noreferrer"
+              href={siteConfig.links.github}
+              className={buttonVariants({ variant: "ghost" })}
+            >
+              <Icons.gitHub className="h-5 w-5" />
+            </Link>
 
             {session ? (
               <UserAuthNav gUser={gUser} />

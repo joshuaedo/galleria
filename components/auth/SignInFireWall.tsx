@@ -21,28 +21,26 @@ import { Icons } from "@/components/Icons"
 import SignInWithGoogle from "./SignInWithGoogle"
 
 export default function SignInFireWall() {
-  const [userInfo, setUserInfo] = useState({ email: "", password: "" })
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState("")
+  const [email, setEmail] = useState<string>("")
+  const [password, setPassword] = useState<string>("")
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [error, setError] = useState<string>("")
   const router = useRouter()
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault()
-    setLoading(true)
+    setIsLoading(true)
     setError("")
 
     try {
-      const res = await signIn("credentials", {
-        email: userInfo.email,
-        password: userInfo.password,
+      const response = await signIn("credentials", {
+        email,
+        password,
         redirect: false,
       })
+      console.log(response)
 
-      console.log(res)
-
-      const isAuthorized = res.error === null
-
-      if (isAuthorized) {
+      if (!response.error) {
         router.push("/")
       } else {
         toast({
@@ -50,14 +48,16 @@ export default function SignInFireWall() {
           description: "Invalid email or password. Please try again.",
           variant: "destructive",
         })
+        setError("Sign-in failed. Please try again.")
       }
     } catch (error) {
+      console.log(error)
+      console.error("Sign-in error:", error)
       setError("Sign-in failed. Please try again.")
     } finally {
-      setLoading(false)
+      setIsLoading(false)
     }
   }
-
 
   return (
     <Card>
@@ -72,10 +72,8 @@ export default function SignInFireWall() {
           <div className="grid gap-2">
             <Label htmlFor="email">Email</Label>
             <Input
-              value={userInfo.email}
-              onChange={(e) =>
-                setUserInfo({ ...userInfo, email: e.target.value })
-              }
+              value={email}
+              onChange={(e) => setEmail(e.target.value)} // Corrected the onChange handler
               id="email"
               type="email"
             />
@@ -83,16 +81,19 @@ export default function SignInFireWall() {
           <div className="grid gap-2">
             <Label htmlFor="password">Password</Label>
             <Input
-              value={userInfo.password}
-              onChange={(e) =>
-                setUserInfo({ ...userInfo, password: e.target.value })
-              }
+              value={password}
+              onChange={(e) => setPassword(e.target.value)} // Corrected the onChange handler
               id="password"
               type="password"
             />
           </div>
 
-          <Button onClick={handleSubmit} type="submit" className="w-full">
+          <Button
+            isLoading={isLoading}
+            onClick={handleSubmit}
+            type="submit"
+            className="w-full"
+          >
             Submit
           </Button>
         </form>
@@ -114,4 +115,3 @@ export default function SignInFireWall() {
     </Card>
   )
 }
-
