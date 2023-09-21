@@ -13,7 +13,7 @@ interface UserAvatarProps extends AvatarProps {
 const UserAvatar: FC<UserAvatarProps> = ({ user, ...props }) => {
   return (
     <Avatar {...props}>
-      {user.image ? (
+      {user?.image ? (
         <AvatarImage
           src={user.image}
           alt='profile picture'
