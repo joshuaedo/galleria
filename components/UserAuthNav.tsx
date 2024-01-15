@@ -1,7 +1,6 @@
 "use client"
 
 import { FC } from "react"
-import { User } from "next-auth"
 import { signOut } from "next-auth/react"
 
 import { buttonVariants } from "@/components/ui/Button"

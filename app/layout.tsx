@@ -10,6 +10,7 @@ import { Header } from "../components/layout/Header"
 import Providers from "../components/layout/Providers"
 import { Toaster } from "../components/ui/Toaster"
 import { siteFont } from "../lib/fonts"
+import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -38,9 +39,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <>
       <html lang="en" suppressHydrationWarning>
-        <head>
+        <Head>
           <link rel="stylesheet" href={siteFont.url} />
-        </head>
+        </Head>
         <body
           className={cn(
             "general-sans min-h-screen bg-background font-sans antialiased"

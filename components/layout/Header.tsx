@@ -2,7 +2,6 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { Globe, LogIn } from "lucide-react"
 import { useSession } from "next-auth/react"
 
 import { siteConfig } from "@/config/site"
@@ -12,6 +11,7 @@ import { Icons } from "../Icons"
 import Logo from "../Logo"
 import UserAuthNav from "../UserAuthNav"
 import { ThemeToggle } from "./ThemeToggle"
+import SignInWithGoogle from "../auth/SignInWithGoogle";
 
 export function Header() {
   const session = useSession()
@@ -55,20 +55,10 @@ export function Header() {
               <Icons.gitHub className="h-5 w-5" />
             </Link>
 
-            {session ? (
+            {gUser ? (
               <UserAuthNav gUser={gUser} />
             ) : (
-              <Link href={siteConfig.signIn.url}>
-                <div
-                  className={buttonVariants({
-                    size: "icon",
-                    variant: "ghost",
-                  })}
-                >
-                  <LogIn className="h-5 w-5" />
-                  <span className="sr-only">Sign In</span>
-                </div>
-              </Link>
+             <SignInWithGoogle />
             )}
 
             <ThemeToggle />
