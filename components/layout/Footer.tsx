@@ -9,12 +9,12 @@ interface FooterProps {}
 const Footer: FC<FooterProps> = () => {
   const { year, wish } = useDate()
   return (
-    <div
-      className={`bebas-neue flex h-10 items-center justify-between px-6 text-center text-sm font-normal md:text-base`}
+    <footer
+      className={`flex items-center justify-between border-t p-4 text-center text-xs font-medium md:px-5 lg:px-6`}
     >
-      <p>&#169; {+year + ` Joshua Edo • ALL RIGHTS RESERVED`}</p>
-      <p>{wish}</p>
-    </div>
+      <p>&#169; {+year + ` Joshua Edo • Galleria • All Rights Reserved`}</p>
+      <p className="hidden lg:flex">{wish}</p>
+    </footer>
   )
 }
 
