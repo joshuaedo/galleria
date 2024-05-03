@@ -10,9 +10,8 @@ export const AntiHero: FC<AntiHeroProps> = ({}) => {
           Discover More with Galleria.
         </h2>
         <p className="max-w-[700px] text-lg font-normal text-muted-foreground">
-          Try our Gsearch to find the perfect images for your
-          needs. You can also easily organize the gallery by dragging and
-          dropping images.
+          Try our Gsearch to find the perfect image. You can also easily
+          organize the gallery by dragging and dropping images.
         </p>
       </div>
     </section>

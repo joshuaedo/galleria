@@ -2,10 +2,7 @@
 
 import { CSSProperties, HTMLAttributes, forwardRef } from "react"
 import Image from "next/image"
-import { Info } from "lucide-react"
 
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/Button"
 import {
   HoverCard,
   HoverCardContent,

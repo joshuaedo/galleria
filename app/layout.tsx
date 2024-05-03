@@ -1,6 +1,5 @@
 import "@/styles/globals.css"
 import { Metadata } from "next"
-import { Inter } from "next/font/google"
 import { GeistSans } from "geist/font/sans"
 
 import { siteConfig } from "@/config/site"
@@ -11,23 +10,40 @@ import { Header } from "../components/layout/Header"
 import Providers from "../components/layout/Providers"
 import { Toaster } from "../components/ui/Toaster"
 
-const inter = Inter({ subsets: ["latin"] })
+const { title, creator, description, siteName, images, url } = siteConfig
 
-export const metadata: Metadata = {
-  title: {
-    default: siteConfig.name,
-    template: `%s - ${siteConfig.name}`,
-  },
-  description: siteConfig.description,
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
-    { media: "(prefers-color-scheme: dark)", color: "black" },
-  ],
-  icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
-  },
+export const generateMetadata = async ({}): Promise<Metadata> => {
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      url,
+      siteName,
+      images: [
+        {
+          url: images[0],
+        },
+      ],
+      type: "website",
+    },
+    twitter: {
+      card: "summary",
+      title,
+      description,
+      creator: creator.name,
+      images,
+    },
+    robots: {
+      follow: true,
+      nocache: true,
+      googleBot: {
+        index: true,
+        follow: false,
+      },
+    },
+  }
 }
 
 interface RootLayoutProps {

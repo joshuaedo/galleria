@@ -48,7 +48,7 @@ const UserAuthNav: FC<UserAuthNavProps> = ({ gUser }) => {
             }}
             className="cursor-pointer"
           >
-            Sign Out
+            Sign out
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

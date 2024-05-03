@@ -1,7 +1,5 @@
 import { ImagesSchemaWithPhotos, type ImagesResults } from "@/lib/models"
-import { toast } from "@/hooks/use-toast"
 
-import { PexelsPhoto } from "../types/photos"
 import { axiosPexelsInstance } from "./axios"
 
 // Function to add color values to photo objects
@@ -40,9 +38,9 @@ export const fetchPhotos = async (): Promise<ImagesResults | undefined> => {
     // Add color values to the photos
     parsedData.photos = addColorValues(parsedData.photos, filterTerms)
 
-    console.log(parsedData)
+    // console.log(parsedData)
 
-    return parsedData 
+    return parsedData
   } catch (error) {
     throw error
   }

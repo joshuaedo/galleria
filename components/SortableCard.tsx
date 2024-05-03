@@ -1,7 +1,7 @@
 import { useSortable } from "@dnd-kit/sortable"
 import { CSS } from "@dnd-kit/utilities"
 import { HTMLAttributes } from "react"
-import Card from '../Card';
+import Card from './Card';
 
 type Props = {
   alt: string

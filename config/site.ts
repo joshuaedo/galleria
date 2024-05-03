@@ -1,20 +1,28 @@
-export type SiteConfig = typeof siteConfig;
+export type SiteConfig = typeof siteConfig
 
 export const siteConfig = {
-  name: " Galleria",
+  title: " Galleria",
   description:
-    "Beautifully designed components built with Radix UI and Tailwind CSS.",
+    "Immerse yourself in our extensive collection of captivating images. Tailor your experience with personalized searches, and unlock a world of possibilities by signing in today.",
+  siteName: "Shop Josh",
+  url: "https://galleria.joshuaedo.com",
+  github: "https://github.com/joshuaedo/galleria",
+  images: [
+    "https://joshuaedo.sirv.com/joshuaedo/public/images/original/projects/galleria.png",
+  ],
   home: {
     title: "Home",
-    url: "/"
+    url: "/",
   },
   signIn: {
     title: "Sign In",
-    url: "/sign-in"
+    url: "/sign-in",
   },
-  links: {
-    twitter: "https://twitter.com/thegr8joshua",
-    github: "https://github.com/joshuaedo/galleria",
+  creator: {
+    name: "Joshua Edo",
     website: "https://joshuaedo.com",
-  }
-};
+    github: "https://github.com/joshuaedo",
+    email: "joshua.edo01@gmail.com",
+    logo: "https://joshuaedo.sirv.com/joshuaedo/public/images/original/me-modified.png",
+  },
+}

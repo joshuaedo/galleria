@@ -1,6 +1,5 @@
 # Galleria 
 
-
 ## Table of Contents
 
 - [Introduction](#introduction)
@@ -87,25 +86,7 @@ Before you begin, ensure you have the following software installed:
 
    The application should be accessible at `http://localhost:3000`.
 
-## Usage
-
-Galleria provides an example of how to create a sign-in form, sign out users, and protect routes that require authentication. You can explore the codebase to understand how these features are implemented.
-
-## Authentication
-
-### Local Email/Password Authentication
-
-- Use the sign-up form to create a new account with your email and password.
-- Use the sign-in form to log in with your email and password.
-
-### Google OAuth Sign-In
-
-- Sign In With Google is currently disabled for this project.
 
 ## Contributing
 
 We welcome contributions to Galleria! If you find any issues, have feature requests, or want to contribute improvements, just do it.
-
-## License
-
-This project is licensed under the MIT License. 

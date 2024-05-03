@@ -22,8 +22,7 @@ import { toast } from "@/hooks/use-toast"
 import { Button } from "@/components/ui/Button"
 import { Command, CommandInput } from "@/components/ui/Command"
 
-import { PhotoItem } from "../../types/photos"
-import Card from "../Card"
+import { PhotoItem } from "../types/photos"
 import SortableCard from "./SortableCard"
 
 interface DNDGalleryProps {
